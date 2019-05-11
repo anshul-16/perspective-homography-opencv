@@ -48,10 +48,8 @@ h, mask = cv2.findHomography(pts1, pts2, cv2.RANSAC,5.0)
 
 height, width, channels = building.shape
 im1Reg = cv2.warpPerspective(dp, h, (width, height))
-cv2.imwrite('third.png',im1Reg)
 
 mask2 = np.zeros(building.shape, dtype=np.uint8)
-cv2.imwrite('fourth.png',mask2)
 
 roi_corners2 = np.int32(positions2)
 
@@ -65,7 +63,7 @@ masked_image2 = cv2.bitwise_and(building, mask2)
 
 #Using Bitwise or to merge the two images
 final = cv2.bitwise_or(im1Reg, masked_image2)
-cv2.imshow('final.png',final)
+cv2.imwrite('final.png',final)
 
 
 
